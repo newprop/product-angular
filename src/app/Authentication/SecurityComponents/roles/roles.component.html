@@ -1,0 +1,50 @@
+<div *ngIf="state === 'list'">
+  <h2>Roles List</h2>
+  <button (click)="createNew()">Create New Role</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let role of roles">
+        <td>{{ role.id }}</td>
+        <td>{{ role.name }}</td>
+        <td>
+          <button (click)="editRole(role)">Edit</button>
+          <button (click)="deleteRole(role.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+    <button (click)="clearMessage()">Clear Message</button>
+  </div>
+</div>
+
+<div *ngIf="state === 'entry'">
+  <h2>{{ model.id ? 'Edit Role' : 'Create Role' }}</h2>
+  <form (submit)="submitData($event)">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" [(ngModel)]="model.name" name="name" required>
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <input id="description" [(ngModel)]="model.description" name="description">
+    </div>
+    <button type="submit">Submit</button>
+    <button type="button" (click)="cancel()">Cancel</button>
+  </form>
+
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+    <button (click)="clearMessage()">Clear Message</button>
+  </div>
+</div>

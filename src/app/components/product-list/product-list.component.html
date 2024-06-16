@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>Product List</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Type</th>
+        <th>Variants</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.name }}</td>
+        <td>{{ product.brand }}</td>
+        <td>{{ product.type }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let variant of product.variants">
+              {{ variant.color }} - {{ variant.specification }} - {{ variant.size }}
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

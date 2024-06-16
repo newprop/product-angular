@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>Order List</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>User</th>
+        <th>Products</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.id }}</td>
+        <td>{{ order.userName }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let product of order.products">
+              Product ID: {{ product.productId }} - Variant ID: {{ product.variantId }} - Quantity: {{ product.quantity }}
+            </li>
+          </ul>
+        </td>
+        <td>{{ order.address }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
